@@ -624,4 +624,11 @@ p {
     .text-block, .image-block {
         max-width: 100%;
     }
+        /* Updated CTA Section for mobile */
+        .cta .btn {
+            display: block;
+            margin: 10px auto;
+            width: 80%;
+            max-width: 300px;
+        }
 }
