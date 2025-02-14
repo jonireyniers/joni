@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reyniers IT Solutions</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    
+    <!-- Meta description for SEO -->
+    <meta name="description" content="Reyniers IT Solutions is your trusted partner for IT solutions, offering top-notch services for businesses to optimize their IT infrastructure.">
+    
+    <!-- Theme color for mobile browser -->
+    <meta name="theme-color" content="#1e1e1e">
+    
+    <!-- Open Graph meta tags for social media -->
+    <meta property="og:title" content="Reyniers IT Solutions">
+    <meta property="og:description" content="Jouw betrouwbare partner voor IT-oplossingen en services.">
+    <meta property="og:image" content="assets/images/logo.png">
+    <meta property="og:url" content="https://www.reyniersitsolutions.nl">
+</head>
+<body>
+
+    <!-- Navigatiebalk -->
+    <div id="navbar-placeholder"></div>
+
+
+    <!-- Hero sectie -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                Slimme IT-oplossingen, op maat
+                <br>
+                <span class="powered-by">Powered by</span><br>
+                <span class="title-reyniers">Reyniers IT Solutions</span>
+            </h1>
+            <svg class="curly-line" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 10">
+                <path d="M0 5 Q 25 0, 50 5 T 100 5" stroke="#e6e5db" stroke-width="2" fill="none"/>
+            </svg>
+            <p class="hero-description">Jouw betrouwbare partner voor IT-oplossingen en services.</p>
+            <a href="contact.html" class="btn">Neem contact op</a>
+        </div>
+    </section>
+    
+    <!-- Waarom kiezen voor mij? -->
+    <section id="why-choose" class="why-choose-section">
+        <div class="container">
+            <h2 class="section-title">Waarom kiezen voor Reyniers IT Solutions?</h2>
+            <p class="intro-text">
+                Bij Reyniers IT Solutions sta jij centraal. Of je nu een particuliere gebruiker bent met IT-problemen, een startup die een vliegende start wil maken, of een kleine onderneming die nood heeft aan betrouwbare IT-ondersteuning. Ik sta klaar om je te helpen.
+            </p>
+            <p class="intro-text">
+                Met mijn expertise in cloud-oplossingen, websiteontwikkeling, IT-reparaties en software-installaties bied ik praktische, efficiënte en betaalbare IT-oplossingen aan. Dit doe ik met passie en toewijding, naast mijn voltijdse job binnen de cloud. Mijn drive? De uitdaging aangaan en mijn ondernemerschap verder uitbouwen, zodat ik jou de best mogelijke ondersteuning kan bieden.
+            </p>
+    
+            <h3 class="sub-title">Drie pijlers van Reyniers IT Solutions</h3>
+            <div class="pillars-container">
+                <div class="pillar-column">
+                    <i class="fas fa-laptop-code pillar-icon"></i>
+                    <h4>Expertise</h4>
+                    <p>Ervaring in IT en cloud-technologieën, up-to-date kennis en een probleemoplossende mindset.</p>
+                </div>
+                <div class="pillar-column">
+                    <i class="fas fa-headset pillar-icon"></i>
+                    <h4>Ondersteuning</h4>
+                    <p>Persoonlijke en hands-on begeleiding, zonder ingewikkelde technische taal. Gewoon duidelijke oplossingen die werken.</p>
+                </div>
+                <div class="pillar-column">
+                    <i class="fas fa-handshake pillar-icon"></i>
+                    <h4>Betrouwbare partners</h4>
+                    <p>Samenwerken met de juiste tools en netwerken om jou altijd de beste service te garanderen.</p>
+                </div>
+            </div>
+    
+            <p class="cta-text">
+                Ben je op zoek naar een betrouwbare IT-partner die met je meedenkt en je helpt groeien? <br> Laten we samen kijken hoe ik jou kan ondersteunen!
+            </p>
+        </div>
+    </section>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        // Functie om HTML-bestand in te laden in een div
+        function loadHTML(file, elementId) {
+            fetch(file)
+                .then(response => response.text())
+                .then(data => document.getElementById(elementId).innerHTML = data)
+                .catch(error => console.log('Error loading file: ', error));
+        }
+
+        // Laad de bestanden in
+        loadHTML('includes/navbar.html', 'navbar-placeholder');
+        loadHTML('includes/footer.html', 'footer-placeholder');
+    </script>
+
+</body>
+</html>
