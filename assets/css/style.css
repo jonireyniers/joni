@@ -632,3 +632,108 @@ p {
             max-width: 300px;
         }
 }
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+    .navbar {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .navbar ul {
+        flex-direction: column;
+    }
+    
+    .navbar ul li {
+        width: 100%;
+    }
+    
+    .hero {
+        flex-direction: column;
+        padding: 20px;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .title-reyniers {
+        font-size: 2.5rem;
+    }
+    
+    .pillars-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .pillar-column {
+        width: 100%;
+    }
+    
+    .contact-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .navbar .logo-img {
+        width: 120px;
+    }
+    
+    .navbar h1 {
+        font-size: 1.5rem;
+    }
+    
+    .hero-title {
+        font-size: 1.8rem;
+    }
+    
+    .title-reyniers {
+        font-size: 2rem;
+    }
+    
+    .btn {
+        padding: 8px 16px;
+        font-size: 1rem;
+    }
+    
+    .cta {
+        padding: 20px;
+    }
+    
+    .cta h3 {
+        font-size: 1.5rem;
+    }
+    
+    .cta p {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .navbar .logo-img {
+        width: 100px;
+    }
+    
+    .navbar h1 {
+        font-size: 1.2rem;
+    }
+    
+    .hero-title {
+        font-size: 1.5rem;
+    }
+    
+    .title-reyniers {
+        font-size: 1.8rem;
+    }
+    
+    .btn {
+        padding: 6px 12px;
+        font-size: 0.9rem;
+    }
+    
+    .contact-form input,
+    .contact-form textarea {
+        width: 100%;
+    }
+}
