@@ -10,23 +10,13 @@
 <body>
 
     <!-- Navigatiebalk -->
-    <nav class="navbar">
-        <div class="logo-container">
-            <img src="assets/images/logo.png" alt="Logo" class="logo-img">
-        </div>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about-me.html">About Me</a></li>
-            <li><a href="diensten.html">Diensten</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
+    <div id="navbar-placeholder"></div>
 
     <!-- Contact sectie -->
     <section class="section bg-dark">
         <h2>Contact</h2>
         <div class="contact-links">
-            <a href="mailto:info@reyniers-it.com" class="btn">Email ons</a>
+            <a href="mailto:jonireyniers@hotmail.be" class="btn">Email ons</a>
             
         </div>
 
@@ -44,12 +34,21 @@
             <button type="submit" class="btn">Verzenden</button>
         </form>
     </section>
+    <div id="footer-placeholder"></div>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Reyniers IT Solutions. Alle rechten voorbehouden.</p>
-        <p><a href="/privacy-policy.html">Privacybeleid</a> | <a href="/terms.html">Algemene voorwaarden</a></p>
-    </footer>
+    <script>
+        // Functie om HTML-bestand in te laden in een div
+        function loadHTML(file, elementId) {
+            fetch(file)
+                .then(response => response.text())
+                .then(data => document.getElementById(elementId).innerHTML = data)
+                .catch(error => console.log('Error loading file: ', error));
+        }
+
+        // Laad de bestanden in
+        loadHTML('includes/navbar.html', 'navbar-placeholder');
+        loadHTML('includes/footer.html', 'footer-placeholder');
+    </script>
 
     <script>
         // Eventlistener voor formulier validatie (optioneel)

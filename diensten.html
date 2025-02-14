@@ -10,19 +10,9 @@
     <meta name="description" content="Ontdek de diensten van Reyniers IT Solutions, van cloud setup en beheer tot IT-trainingen en workshops.">
 </head>
 <body>
+    <div id="navbar-placeholder"></div>
 
-    <!-- Navigatiebalk -->
-    <div class="navbar">
-        <div class="logo-container">
-            <img src="assets/images/logo.png" alt="Reyniers IT Solutions Logo" class="logo-img">
-        </div>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about-me.html">About Me</a></li>
-            <li><a href="diensten.html">Diensten</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </div>
+
 
     <!-- Diensten sectie -->
     <section class="section">
@@ -53,12 +43,21 @@
             </div>
         </div>
     </section>
+    <div id="footer-placeholder"></div>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Reyniers IT Solutions. Alle rechten voorbehouden.</p>
-        <p><a href="/privacy-policy.html">Privacybeleid</a> | <a href="/terms.html">Algemene voorwaarden</a></p>
-    </footer>
+    <script>
+        // Functie om HTML-bestand in te laden in een div
+        function loadHTML(file, elementId) {
+            fetch(file)
+                .then(response => response.text())
+                .then(data => document.getElementById(elementId).innerHTML = data)
+                .catch(error => console.log('Error loading file: ', error));
+        }
+
+        // Laad de bestanden in
+        loadHTML('includes/navbar.html', 'navbar-placeholder');
+        loadHTML('includes/footer.html', 'footer-placeholder');
+    </script>
 
 </body>
 </html>
