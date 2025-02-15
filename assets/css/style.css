@@ -48,6 +48,13 @@ a {
     margin-right: 10px;
 }
 
+.navbar .menu-icon {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: white;
+}
+
 .navbar ul {
     list-style: none;
     display: flex;
@@ -559,26 +566,32 @@ h3 {
 }
 
 @media screen and (max-width: 768px) {
-    .navbar .logo-img {
-        width: 100px;
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
     }
 
-    .btn {
-        padding: 8px 16px;
-        font-size: 1rem;
+    .navbar .menu-icon {
+        display: block;
     }
 
-    .cta h3 {
-        font-size: 1.5rem;
-    }
-
-    .hero-title {
-        font-size: 1.5rem;
-    }
-
-    .contact-form input,
-    .contact-form textarea {
+    .navbar ul {
+        flex-direction: column;
         width: 100%;
+        display: none;
+    }
+
+    .navbar ul.show {
+        display: flex;
+    }
+
+    .navbar ul li {
+        width: 100%;
+        text-align: left;
+    }
+
+    .navbar ul li a {
+        padding: 10px 20px;
     }
 }
 

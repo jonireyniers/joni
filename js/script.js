@@ -13,6 +13,10 @@ function debounce(func, wait = 20, immediate = true) {
         if (callNow) func.apply(context, args);
     };
 }
+function toggleMenu() {
+    const navLinks = document.querySelector('.navbar ul');
+    navLinks.classList.toggle('show');
+}
 
 // Functie voor scroll-effecten
 document.addEventListener("DOMContentLoaded", function() {
