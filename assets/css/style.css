@@ -36,7 +36,6 @@ a {
     background-color: #778491;
     padding: 15px 0;
     width: 100%;
-    
 }
 
 .navbar .logo-container {
@@ -47,11 +46,6 @@ a {
 .navbar .logo-img {
     width: 150px;
     margin-right: 10px;
-}
-
-.navbar h1 {
-    font-size: 1.8rem;
-    margin: 0;
 }
 
 .navbar ul {
@@ -117,7 +111,6 @@ a {
     margin-bottom: 20px;
     text-align: center;
     background-color: #778491;
-    ;
 }
 
 .hero-content {
@@ -130,7 +123,6 @@ a {
     font-size: 2.5rem;
     margin: 0;
     color: white;
-    
 }
 
 .hero-description {
@@ -145,7 +137,6 @@ a {
 .title-reyniers {
     font-size: 3rem;
     color: white;
-    
 }
 
 .curly-line {
@@ -167,7 +158,7 @@ a {
 }
 
 .btn:hover {
-    background-color: #D9D9D9 ;
+    background-color: #D9D9D9;
     color: #000000;
     border-color: #a3a395;
 }
@@ -300,7 +291,7 @@ footer {
 footer p {
     margin: 0;
     font-size: 1rem;
-    color: #fff
+    color: #fff;
 }
 
 .social-links {
@@ -319,12 +310,9 @@ footer p {
 }
 
 /* Contact Page */
-/* Contact Page */
-/* Contact Page */
-/* Contact Page */
 .section.bg-dark {
-    background-color: var(--background-color); /* Change to match other pages */
-    color: var(--text-color); /* Change to match other pages */
+    background-color: var(--background-color);
+    color: var(--text-color);
     padding: 40px 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -354,7 +342,7 @@ footer p {
 .contact-form {
     max-width: 600px;
     margin: 0 auto;
-    background-color: #fff; /* Change to match other pages */
+    background-color: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -364,7 +352,7 @@ footer p {
     display: block;
     margin-top: 10px;
     font-weight: bold;
-    color: var(--text-color); /* Change to match other pages */
+    color: var(--text-color);
 }
 
 .contact-form input,
@@ -372,18 +360,18 @@ footer p {
     width: 80%;
     padding: 10px;
     margin-top: 5px;
-    margin-bottom: 15px; /* Add margin to separate from form edges */
-    border: 1px solid #ccc; /* Change to match other pages */
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: #f4f4f4; /* Change to match other pages */
-    color: var(--text-color); /* Change to match other pages */
+    background-color: #f4f4f4;
+    color: var(--text-color);
     font-size: 1rem;
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
     outline: none;
-    background-color: #e6e5db; /* Change to match other pages */
+    background-color: #e6e5db;
 }
 
 .contact-form button {
@@ -401,6 +389,7 @@ footer p {
 .contact-form button:hover {
     background-color: #0056b3;
 }
+
 /* Services Page */
 .services {
     display: grid;
@@ -450,7 +439,6 @@ footer p {
     background-color: #333333;
 }
 
-
 /* Over Mij Section */
 .aboutmesection {
     padding: 60px 30px;
@@ -487,10 +475,9 @@ footer p {
     max-width: 100%;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border: 5px solid #f4f4f4; /* Subtle border */
+    border: 5px solid #f4f4f4;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 
 .image-block img:hover {
     transform: scale(1.05);
@@ -512,10 +499,6 @@ footer p {
     margin-bottom: 30px;
 }
 
-h2, h3 {
-    color: #333;
-}
-
 h2 {
     font-size: 2rem;
     margin-bottom: 20px;
@@ -523,16 +506,9 @@ h2 {
 
 h3 {
     margin-top: 30px;
-    font-size: 1.5rem;
-}
-
-p {
-    color: #555;
-    line-height: 1.6;
 }
 
 .flexibility-block {
-   
     max-width: 100%;
     margin-top: 30px;
     line-height: 1.6;
@@ -540,12 +516,10 @@ p {
 }
 
 .follow-me {
-    
     max-width: 100%;
     margin-top: 30px;
     line-height: 1.6;
     color: #333;
-    text-align: right;
 }
 
 .follow-me h3 {
@@ -553,185 +527,55 @@ p {
 }
 
 .follow-me a {
-    display: inline-block;
-    margin: 5px;
-    font-size: 1.5rem;
+    font-size: 2rem;
     color: #333;
+    margin: 0 15px;
     transition: color 0.3s ease;
 }
 
 .follow-me a:hover {
-    color: var(--primary-color);
+    color: #1b64be;
 }
 
 /* Responsive styles */
-
-
-
-
-
-
-
-/* Responsive styles */
-@media screen and (max-width: 768px) {
-    .over-mij-container {
-        flex-direction: column;
-        align-items: center;
-    }
-    .services {
-        grid-template-columns: 1fr;
-    }
-
-    .text-block, .image-block, .flexibility-block, .follow-me {
-        max-width: 100%;
-    }
-
-    .follow-me {
-        text-align: center;
-    }
-    .navbar ul {
-        flex-direction: column;
-    }
-
-    .hero {
-        flex-direction: column;
-        padding: 20px;
-    }
-
-    .pillars-container {
-        flex-direction: column;
-    }
-
-    .reasons {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .reason {
-        width: 80%;
-        margin-bottom: 20px;
-    }
-
-    .profile {
-        width: 80%;
-        margin: 0 auto;
-    }
-    .over-mij-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .text-block, .image-block {
-        max-width: 100%;
-    }
-        /* Updated CTA Section for mobile */
-        .cta .btn {
-            display: block;
-            margin: 10px auto;
-            width: 80%;
-            max-width: 300px;
-        }
-}
-/* Responsive Design */
 @media screen and (max-width: 1024px) {
     .navbar {
         flex-direction: column;
         text-align: center;
     }
-    
+
     .navbar ul {
         flex-direction: column;
     }
-    
+
     .navbar ul li {
         width: 100%;
     }
-    
-    .hero {
-        flex-direction: column;
-        padding: 20px;
-    }
-    
-    .hero-title {
-        font-size: 2rem;
-    }
-    
-    .title-reyniers {
-        font-size: 2.5rem;
-    }
-    
+
     .pillars-container {
         flex-direction: column;
         gap: 20px;
-    }
-    
-    .pillar-column {
-        width: 100%;
-    }
-    
-    .contact-links {
-        flex-direction: column;
-        gap: 10px;
     }
 }
 
 @media screen and (max-width: 768px) {
     .navbar .logo-img {
-        width: 120px;
+        width: 100px;
     }
-    
-    .navbar h1 {
-        font-size: 1.5rem;
-    }
-    
-    .hero-title {
-        font-size: 1.8rem;
-    }
-    
-    .title-reyniers {
-        font-size: 2rem;
-    }
-    
+
     .btn {
         padding: 8px 16px;
         font-size: 1rem;
     }
-    
-    .cta {
-        padding: 20px;
-    }
-    
+
     .cta h3 {
         font-size: 1.5rem;
     }
-    
-    .cta p {
-        font-size: 1rem;
-    }
-}
 
-@media screen and (max-width: 480px) {
-    .navbar .logo-img {
-        width: 100px;
-    }
-    
-    .navbar h1 {
-        font-size: 1.2rem;
-    }
-    
     .hero-title {
         font-size: 1.5rem;
     }
-    
-    .title-reyniers {
-        font-size: 1.8rem;
-    }
-    
-    .btn {
-        padding: 6px 12px;
-        font-size: 0.9rem;
-    }
-    
+
     .contact-form input,
     .contact-form textarea {
         width: 100%;
