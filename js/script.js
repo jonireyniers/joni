@@ -33,4 +33,12 @@ document.addEventListener("DOMContentLoaded", function() {
     document.querySelectorAll('section').forEach(section => {
         observer.observe(section);
     });
+
+    // Toggle navbar menu
+    const navbarToggle = document.querySelector('.navbar-toggle');
+    const navbarMenu = document.querySelector('.navbar-menu');
+
+    navbarToggle.addEventListener('click', () => {
+        navbarMenu.classList.toggle('active');
+    });
 });
