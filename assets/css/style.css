@@ -34,10 +34,32 @@ a {
     justify-content: space-between;
     align-items: center;
     background-color: #778491;
-    padding: 15px 0;
+    padding: 15px 20px;
     width: 100%;
-    
+    position: relative;
 }
+.nav-links {
+    
+    display: flex;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+/* Hamburger menu styling */
+.menu-toggle {
+    display: none;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+}
+
 
 .navbar .logo-container {
     display: flex;
@@ -707,6 +729,29 @@ p {
     
     .cta p {
         font-size: 1rem;
+    }
+    .nav-links {
+        display: none;  /* Menu is standaard verborgen */
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: #778491;
+        text-align: center;
+    }
+
+    .nav-links li {
+        flex: none;
+        padding: 10px 0;
+    }
+
+    .menu-toggle {
+        display: block; /* Hamburger menu zichtbaar maken */
+    }
+
+    .nav-links.active {
+        display: flex; /* Menu wordt zichtbaar als de active class is toegevoegd */
     }
 }
 
