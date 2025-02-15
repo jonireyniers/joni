@@ -13,6 +13,13 @@ function debounce(func, wait = 20, immediate = true) {
         if (callNow) func.apply(context, args);
     };
 }
+document.addEventListener("DOMContentLoaded", function() {
+    const dropdown = document.querySelector(".dropdown");
+    dropdown.addEventListener("click", function() {
+        dropdown.classList.toggle("active");  // Toggle de zichtbaarheid van de dropdown
+    });
+});
+
 
 // Functie voor scroll-effecten
 document.addEventListener("DOMContentLoaded", function() {
@@ -34,11 +41,5 @@ document.addEventListener("DOMContentLoaded", function() {
         observer.observe(section);
     });
 });
-document.addEventListener("DOMContentLoaded", function() {
-    const menuToggle = document.querySelector(".menu-toggle");
-    const navLinks = document.querySelector(".nav-links");
 
-    menuToggle.addEventListener("click", function() {
-        navLinks.classList.toggle("active");  // Toggle de zichtbaarheid van het menu
-    });
-});
+
