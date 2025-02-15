@@ -34,70 +34,10 @@ a {
     justify-content: space-between;
     align-items: center;
     background-color: #778491;
-    padding: 15px 20px;
+    padding: 15px 0;
     width: 100%;
-    position: relative;
-}
-.nav-links {
     
-    display: flex;
 }
-
-.nav-links li {
-    margin: 0 15px;
-}
-
-.nav-links a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-}
-/* Hamburger menu styling */
-.menu-toggle {
-    display: none;
-    font-size: 30px;
-    color: white;
-    cursor: pointer;
-}
-/* Dropdown menu styling */
-.dropdown {
-    display: none;  /* Verborgen op grote schermen */
-}
-
-.dropdown .dropbtn {
-    background-color: transparent;
-    color: white;
-    font-size: 30px;
-    border: none;
-    cursor: pointer;
-    display: flex;
-}
-
-.dropdown .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #778491;
-    min-width: 160px;
-    z-index: 1;
-    text-align: left;
-}
-
-.dropdown .dropdown-content a {
-    color: white;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-.dropdown .dropdown-content a:hover {
-    background-color: #575757;
-}
-
-/* Show dropdown content when clicked */
-.dropdown.active .dropdown-content {
-    display: block;
-}
-
 
 .navbar .logo-container {
     display: flex;
@@ -651,7 +591,6 @@ p {
     }
     .navbar ul {
         flex-direction: column;
-        display: none;  /* Standaard verborgen op mobiele schermen */
     }
 
     .hero {
@@ -677,74 +616,23 @@ p {
         width: 80%;
         margin: 0 auto;
     }
-
-    /* Navbar voor mobiele apparaten */
-    .navbar .logo-img {
-        width: 120px;
-    }
-    
-    .navbar h1 {
-        font-size: 1.5rem;
-    }
-    
-    .hero-title {
-        font-size: 1.8rem;
-    }
-    
-    .title-reyniers {
-        font-size: 2rem;
-    }
-    
-    .btn {
-        padding: 8px 16px;
-        font-size: 1rem;
-    }
-    
-    .cta {
-        padding: 20px;
-    }
-    
-    .cta h3 {
-        font-size: 1.5rem;
-    }
-    
-    .cta p {
-        font-size: 1rem;
-    }
-
-    /* Dropdown menu zichtbaar maken op mobiele schermen */
-    .dropdown {
-        display: block;  /* Maak de hamburgerknop zichtbaar */
-    }
-
-    .menu-toggle {
-        display: block;  /* Hamburgerknop zichtbaar */
-    }
-
-    /* Wanneer de dropdown geactiveerd is, toon de nav-links */
-    .navbar.active .nav-links {
-        display: flex;  /* De navigatielinks verschijnen */
-    }
-
-    /* Nav-links in dropdown stijl */
-    .nav-links {
-        display: none;
+    .over-mij-container {
         flex-direction: column;
-        width: 100%;
+        align-items: center;
     }
 
-    .nav-links li {
-        width: 100%;
-        text-align: center;
-        padding: 10px 0;
+    .text-block, .image-block {
+        max-width: 100%;
     }
-
-    .nav-links li a {
-        font-size: 1.2rem;
-    }
+        /* Updated CTA Section for mobile */
+        .cta .btn {
+            display: block;
+            margin: 10px auto;
+            width: 80%;
+            max-width: 300px;
+        }
 }
-
-/* Responsieve stijl voor iets grotere schermen (max-width: 1024px) */
+/* Responsive Design */
 @media screen and (max-width: 1024px) {
     .navbar {
         flex-direction: column;
@@ -787,7 +675,41 @@ p {
     }
 }
 
-/* Responsieve stijl voor hele kleine schermen (max-width: 480px) */
+@media screen and (max-width: 768px) {
+    .navbar .logo-img {
+        width: 120px;
+    }
+    
+    .navbar h1 {
+        font-size: 1.5rem;
+    }
+    
+    .hero-title {
+        font-size: 1.8rem;
+    }
+    
+    .title-reyniers {
+        font-size: 2rem;
+    }
+    
+    .btn {
+        padding: 8px 16px;
+        font-size: 1rem;
+    }
+    
+    .cta {
+        padding: 20px;
+    }
+    
+    .cta h3 {
+        font-size: 1.5rem;
+    }
+    
+    .cta p {
+        font-size: 1rem;
+    }
+}
+
 @media screen and (max-width: 480px) {
     .navbar .logo-img {
         width: 100px;
