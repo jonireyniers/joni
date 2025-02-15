@@ -53,14 +53,6 @@ a {
     font-size: 1.8rem;
     margin: 0;
 }
-.navbar-toggle {
-    display: none;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 1.5rem;
-    cursor: pointer;
-}
 
 .navbar ul {
     list-style: none;
@@ -582,6 +574,108 @@ p {
 
 /* Responsive styles */
 @media screen and (max-width: 768px) {
+    .over-mij-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .services {
+        grid-template-columns: 1fr;
+    }
+
+    .text-block, .image-block, .flexibility-block, .follow-me {
+        max-width: 100%;
+    }
+
+    .follow-me {
+        text-align: center;
+    }
+    .navbar ul {
+        flex-direction: column;
+    }
+
+    .hero {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .pillars-container {
+        flex-direction: column;
+    }
+
+    .reasons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .reason {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+
+    .profile {
+        width: 80%;
+        margin: 0 auto;
+    }
+    .over-mij-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .text-block, .image-block {
+        max-width: 100%;
+    }
+        /* Updated CTA Section for mobile */
+        .cta .btn {
+            display: block;
+            margin: 10px auto;
+            width: 80%;
+            max-width: 300px;
+        }
+}
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+    .navbar {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .navbar ul {
+        flex-direction: column;
+    }
+    
+    .navbar ul li {
+        width: 100%;
+    }
+    
+    .hero {
+        flex-direction: column;
+        padding: 20px;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .title-reyniers {
+        font-size: 2.5rem;
+    }
+    
+    .pillars-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .pillar-column {
+        width: 100%;
+    }
+    
+    .contact-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+@media screen and (max-width: 768px) {
     .navbar .logo-img {
         width: 120px;
     }
@@ -614,25 +708,6 @@ p {
     .cta p {
         font-size: 1rem;
     }
-    .navbar ul {
-        flex-direction: column;
-        display: none;
-        width: 100%;
-    }
-    .navbar ul li {
-        text-align: left;
-    }
-
-    .navbar-toggle {
-        display: block;
-    }
-
-    .navbar-menu.active {
-        display: flex;
-        flex-direction: column;
-    }
-}
-    
 }
 
 @media screen and (max-width: 480px) {
