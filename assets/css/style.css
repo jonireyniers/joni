@@ -37,6 +37,7 @@ a {
     padding: 15px 0;
     width: 100%;
     position: relative;
+    z-index: 1000;
 }
 
 .navbar .logo-container {
