@@ -606,6 +606,14 @@ h3 {
     .hero-content {
         margin-top: 80px;
     }
+    .services {
+        flex-direction: column;
+    }
+    .service-item {
+        flex: 1 1 100%;
+        margin: 10 px 0;
+    }
+
 }
 
 @media screen and (max-width: 480px) {
