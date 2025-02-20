@@ -21,7 +21,7 @@
         </div>
 
         <!-- Contactformulier -->
-        <form class="contact-form" id="contactForm" action="send_email.php" method="POST">
+        <form action="https://formspree.io/f/xzzdoerr" method="POST" class="contact-form" id="contactForm">
             <label for="name">Naam:</label>
             <input type="text" id="name" name="name" required>
 
@@ -50,19 +50,6 @@
         loadHTML('includes/footer.html', 'footer-placeholder');
     </script>
 
-    <script>
-        // Eventlistener voor formulier validatie (optioneel)
-        document.getElementById('contactForm').addEventListener('submit', function(event) {
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-            
-            if (!name || !email || !message) {
-                alert('Vul alstublieft alle velden in!');
-                event.preventDefault();
-            }
-        });
-    </script>
     <script src="js/script.js"></script>
 
 </body>
