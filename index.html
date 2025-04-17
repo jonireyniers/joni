@@ -3,23 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reyniers IT Solutions</title>
+    <title>Reyniers IT Solutions - IT Diensten, Cloud Services en IT-Oplossingen voor Bedrijven</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    
     <!-- Meta description for SEO -->
-    <meta name="description" content="Reyniers IT Solutions is your trusted partner for IT solutions, offering top-notch services for businesses to optimize their IT infrastructure.">
-    <!-- Theme color for mobile browser -->
-    <meta name="theme-color" content="#1e1e1e">
+    <meta name="description" content="Reyniers IT Solutions biedt op maat gemaakte IT-oplossingen, van cloud services tot webontwikkeling en IT-ondersteuning voor bedrijven en particulieren.">
+    
     <!-- Open Graph meta tags for social media -->
     <meta property="og:title" content="Reyniers IT Solutions">
     <meta property="og:description" content="Jouw betrouwbare partner voor IT-oplossingen en services.">
     <meta property="og:image" content="assets/images/logo.png">
     <meta property="og:url" content="https://www.reyniersitsolutions.be">
+    <meta property="og:type" content="website">
+    
+    <!-- Schema.org structured data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Reyniers IT Solutions",
+      "url": "https://www.reyniersitsolutions.be",
+      "logo": "https://www.reyniersitsolutions.be/assets/images/logo.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+32 123 456 789",
+        "contactType": "Customer Service"
+      },
+      "sameAs": [
+        "https://www.facebook.com/reyniersitsolutions",
+        "https://twitter.com/reyniersitsolutions"
+      ]
+    }
+    </script>
+
+    <!-- Theme color for mobile browser -->
+    <meta name="theme-color" content="#1e1e1e">
 </head>
 <body>
     <!-- Navigatiebalk -->
     <div id="navbar-placeholder"></div>
+
     <!-- Hero sectie -->
     <section class="hero">
         <div class="hero-content">
@@ -36,10 +61,11 @@
             <a href="contact.html" class="btn">Neem contact op</a>
         </div>
     </section>
+
     <!-- Waarom kiezen voor mij? -->
     <section id="why-choose" class="why-choose-section">
         <div class="container">
-            <h2 class="section-title">Waarom kiezen voor Reyniers IT Solutions?</h2>
+            <h2 class="section-title">Waarom kiezen voor Reyniers IT Solutions voor jouw IT-behoeften?</h2>
             <p class="intro-text">
                 Bij Reyniers IT Solutions sta jij centraal. Of je nu een particuliere gebruiker bent met IT-problemen, een startup die een vliegende start wil maken, of een kleine onderneming die nood heeft aan betrouwbare IT-ondersteuning. Ik sta klaar om je te helpen.
             </p>
@@ -69,7 +95,9 @@
             </p>
         </div>
     </section>
+
     <div id="footer-placeholder"></div>
+
     <script>
         // Functie om HTML-bestand in te laden in een div
         function loadHTML(file, elementId) {
@@ -78,6 +106,7 @@
                 .then(data => document.getElementById(elementId).innerHTML = data)
                 .catch(error => console.log('Error loading file: ', error));
         }
+
         // Laad de bestanden in
         loadHTML('includes/navbar.html', 'navbar-placeholder');
         loadHTML('includes/footer.html', 'footer-placeholder');
