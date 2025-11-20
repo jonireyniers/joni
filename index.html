@@ -14,8 +14,8 @@
   <meta http-equiv="Content-Security-Policy" 
         content="default-src 'self'; 
                  script-src 'self' 'unsafe-inline' https://code.jquery.com https://cdn.jsdelivr.net https://formspree.io https://www.google.com https://www.gstatic.com; 
-                 style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; 
-                 font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net; 
+                 style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; 
+                 font-src 'self' https://cdn.jsdelivr.net; 
                  img-src 'self' data:; 
                  frame-src https://www.google.com;
                  connect-src 'self' https://formspree.io https://www.google.com;">
@@ -23,7 +23,7 @@
   <meta http-equiv="X-Frame-Options" content="DENY">
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
 
-  <!-- Fonts & Icons met SRI -->
+  <!-- Bootstrap & Icons met SRI -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" 
         rel="stylesheet" 
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" 
@@ -1132,7 +1132,7 @@
               </p>
 
               <div style="display:flex; gap:12px; margin-top:8px; flex-wrap:wrap">
-                <a class="btn-ghost" href="mailto:jonireyniers@hotmail.be" style="flex:1; min-width:200px; justify-content:center">
+                <a class="btn-ghost" href="mailto:reyniersitsolutions@outlook.be" style="flex:1; min-width:200px; justify-content:center">
                   <i class="bi bi-envelope-fill"></i>
                   E-mail
                 </a>
@@ -1277,7 +1277,7 @@
 
               <p style="color:var(--text-muted); margin-bottom:16px; display:flex; align-items:center; gap:12px">
                 <i class="bi bi-envelope-fill" style="color:var(--accent); font-size:20px"></i>
-                <a href="mailto:jonireyniers@hotmail.be">jonireyniers@hotmail.be</a>
+                <a href="mailto:reyniersitsolutions@outlook.be">reyniersitsolutions@outlook.be</a>
               </p>
 
               <p style="color:var(--text-muted); margin-bottom:16px; display:flex; align-items:center; gap:12px">
@@ -1337,10 +1337,10 @@
   <!-- ========================================
        JAVASCRIPT
   ======================================== -->
-  <!-- jQuery (MOET EERST geladen worden!) -->
+  <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   
-  <!-- Click Scroll Plugin (werkt alleen als jQuery geladen is) -->
+  <!-- Click Scroll Plugin -->
   <script src="js/click-scroll.js"></script>
 
   <script>
@@ -1372,11 +1372,6 @@
         mobileToggle.setAttribute('aria-expanded', 'false');
       });
     });
-
-    // REMOVE ALL THIS CUSTOM SCROLL CODE - click-scroll.js handles it
-    // document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    //   ... REMOVE THIS ENTIRE BLOCK ...
-    // });
 
     // Intersection Observer for scroll animations
     const observerOptions = {
