@@ -1,0 +1,1425 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <!-- Security Headers -->
+  <meta http-equiv="Content-Security-Policy" 
+        content="default-src 'self'; 
+                 script-src 'self' 'unsafe-inline' https://code.jquery.com https://cdn.jsdelivr.net https://formspree.io https://www.google.com https://www.gstatic.com; 
+                 style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; 
+                 font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net; 
+                 img-src 'self' data:; 
+                 frame-src https://www.google.com;
+                 connect-src 'self' https://formspree.io https://www.google.com;">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+
+  <!-- Fonts & Icons met SRI -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" 
+        rel="stylesheet" 
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" 
+        crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" 
+        rel="stylesheet" 
+        integrity="sha384-tViUnnbYAV00FLIhhi3v/dWt3Jxw4gZQcNoSCxCIFNJVCx7/D55/wXsrNIRANwdD" 
+        crossorigin="anonymous">
+
+  <!-- Google reCAPTCHA v3 -->
+  <script src="https://www.google.com/recaptcha/api.js?render=6LfCFRMsAAAAAMw_0Y025CBhRB3JRvYKovoXtXOt"></script>
+
+  <style>
+    /* ========================================
+       CSS VARIABLES
+    ======================================== */
+    :root {
+      /* Colors - Modern Vibrant Palette */
+      --bg-gradient-start: #f8faff;
+      --bg-gradient-end: #ffffff;
+      --card: #ffffff;
+      --text-primary: #0a1128;
+      --text-secondary: #1e2d4d;
+      --text-muted: #64748b;
+      
+      /* Accent Colors - Electric Blue Theme */
+      --accent: #0A84FF;
+      --accent-dark: #0560c8;
+      --accent-hover: #0077ed;
+      --accent-light: #E5F2FF;
+      --accent-glow: rgba(10, 132, 255, 0.3);
+      
+      /* Gradient Accents */
+      --gradient-primary: linear-gradient(135deg, #0A84FF 0%, #0560c8 50%, #00d4ff 100%);
+      --gradient-secondary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --gradient-success: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+      --gradient-warm: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      
+      /* Shadows - Dramatic & Modern */
+      --shadow-sm: 0 2px 8px rgba(16,24,40,0.04), 0 4px 16px rgba(16,24,40,0.06);
+      --shadow-md: 0 8px 24px rgba(16,24,40,0.08), 0 12px 32px rgba(16,24,40,0.1);
+      --shadow-lg: 0 16px 48px rgba(16,24,40,0.12), 0 24px 64px rgba(16,24,40,0.15);
+      --shadow-xl: 0 24px 64px rgba(16,24,40,0.16), 0 32px 80px rgba(16,24,40,0.2);
+      --shadow-accent: 0 12px 40px rgba(10,132,255,0.25);
+      --shadow-accent-hover: 0 20px 60px rgba(10,132,255,0.35);
+      
+      /* Border Radius - More Rounded */
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-xl: 32px;
+      --radius-full: 999px;
+      
+      /* Transitions - Smooth & Snappy */
+      --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      
+      /* Spacing */
+      --section-padding: 120px;
+    }
+
+    /* ========================================
+       RESET & BASE STYLES
+    ======================================== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    html, body {
+      height: 100%;
+      overflow-x: hidden;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(180deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+      color: var(--text-primary);
+      line-height: 1.7;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      position: relative;
+    }
+
+    /* Animated Background Pattern */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(10, 132, 255, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(102, 126, 234, 0.06) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(0, 212, 255, 0.04) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+      animation: bgPulse 15s ease-in-out infinite;
+    }
+
+    @keyframes bgPulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.8; transform: scale(1.1); }
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    a:hover {
+      color: var(--accent-hover);
+    }
+
+    a:focus {
+      outline: 3px solid var(--accent);
+      outline-offset: 4px;
+      border-radius: var(--radius-sm);
+    }
+
+    /* ========================================
+       SCROLL PROGRESS INDICATOR
+    ======================================== */
+    .scroll-indicator {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      background: var(--gradient-primary);
+      z-index: 100;
+      transition: width 0.1s ease;
+      box-shadow: 0 2px 12px var(--accent-glow);
+    }
+
+    /* ========================================
+       NAVIGATION - Ultra Modern
+    ======================================== */
+    .site-nav {
+      position: sticky;
+      top: 24px;
+      z-index: 50;
+      padding: 16px 24px;
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: var(--radius-xl);
+      margin: 16px 32px;
+      backdrop-filter: blur(24px) saturate(180%);
+      box-shadow: var(--shadow-lg);
+      transition: var(--transition);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      animation: navSlideDown 0.6s ease-out;
+    }
+
+    @keyframes navSlideDown {
+      from { transform: translateY(-100px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .site-nav:hover {
+      box-shadow: var(--shadow-xl);
+      transform: translateY(-2px);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Brand/Logo with Glow */
+    .brand {
+      display: flex;
+      align-items: center;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .brand::after {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border-radius: var(--radius-lg);
+      background: var(--gradient-primary);
+      opacity: 0;
+      filter: blur(20px);
+      transition: var(--transition);
+      z-index: -1;
+    }
+
+    .brand:hover::after {
+      opacity: 0.4;
+    }
+
+    .brand:hover {
+      transform: translateY(-2px);
+    }
+
+    .brand-logo {
+      width: 120px;
+      height: 110px;
+      object-fit: contain;
+      transition: var(--transition);
+      filter: drop-shadow(0 4px 12px rgba(10, 132, 255, 0.2));
+    }
+
+    .brand:hover .brand-logo {
+      transform: scale(1.08) rotate(-2deg);
+      filter: drop-shadow(0 8px 24px rgba(10, 132, 255, 0.4));
+    }
+
+    /* Nav Links - Modern Pills */
+    .nav-links {
+      gap: 8px;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+      padding: 12px 20px;
+      border-radius: var(--radius-full);
+      font-weight: 600;
+      font-size: 15px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-links a::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gradient-primary);
+      opacity: 0;
+      transition: var(--transition);
+      border-radius: var(--radius-full);
+      z-index: -1; /* Place gradient behind text */
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 8px;
+      left: 50%;
+      transform: translateX(-50%) scaleX(0);
+      width: 80%;
+      height: 3px;
+      background: var(--accent);
+      border-radius: var(--radius-full);
+      transition: transform 0.3s ease;
+      z-index: -1; /* Place underline behind text */
+    }
+
+    .nav-links a:hover {
+      color: #ffffff; /* White text on hover */
+      transform: translateY(-2px);
+    }
+
+    .nav-links a:hover::before {
+      opacity: 1; /* Show gradient background */
+    }
+
+    .nav-links a:hover::after {
+      transform: translateX(-50%) scaleX(1);
+    }
+
+    /* ========================================
+       BUTTONS - Eye-Catching
+    ======================================== */
+    .btn-cta {
+      background: var(--gradient-primary);
+      color: #fff;
+      padding: 14px 28px;
+      border-radius: var(--radius-full);
+      border: 0;
+      font-weight: 700;
+      font-size: 15px;
+      box-shadow: var(--shadow-accent);
+      cursor: pointer;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      position: relative;
+      overflow: hidden;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .btn-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, transparent 100%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .btn-cta::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      background: var(--gradient-primary);
+      border-radius: var(--radius-full);
+      opacity: 0;
+      filter: blur(16px);
+      transition: var(--transition);
+      z-index: -1;
+    }
+
+    .btn-cta:hover {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: var(--shadow-accent-hover);
+      color: #fff;
+    }
+
+    .btn-cta:hover::before {
+      opacity: 1;
+    }
+
+    .btn-cta:hover::after {
+      opacity: 0.6;
+    }
+
+    .btn-cta:active {
+      transform: translateY(-2px) scale(1.02);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border: 1.5px solid rgba(15, 23, 42, 0.1);
+      padding: 9px 16px;
+      border-radius: 11px;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--text-secondary); /* Add default text color */
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-ghost::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gradient-primary);
+      opacity: 0;
+      transition: var(--transition);
+      border-radius: 11px;
+      z-index: -1;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(10, 132, 255, 0.05);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      color: #ffffff; /* White text on hover */
+    }
+
+    .btn-ghost:hover::before {
+      opacity: 1; /* Show gradient background */
+    }
+
+    .btn-ghost i {
+      transition: var(--transition);
+    }
+
+    /* ========================================
+       HERO SECTION - Stunning
+    ======================================== */
+    /* ========================================
+   HERO SECTION - Stunning
+======================================== */
+    .hero {
+    padding: 100px 0 120px 0;
+    position: relative;
+    overflow: hidden;
+    
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(10, 132, 255, 0.1) 0%, transparent 70%);
+      animation: heroGlow 10s ease-in-out infinite;
+    }
+
+    @keyframes heroGlow {
+      0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.6; }
+      50% { transform: scale(1.2) rotate(180deg); opacity: 1; }
+    }
+
+    .hero-card {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.9));
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-xl);
+      padding: 60px;
+      display: flex;
+      gap: 60px;
+      align-items: center;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(20px);
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    @keyframes fadeInUp {
+      from { transform: translateY(40px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .hero-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -30%;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(10, 132, 255, 0.05) 0%, transparent 70%);
+      pointer-events: none;
+      animation: heroCardGlow 8s ease-in-out infinite;
+    }
+
+    @keyframes heroCardGlow {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(20px, -20px) scale(1.1); }
+    }
+
+    .hero-left {
+      flex: 1;
+      position: relative;
+      z-index: 1;
+    }
+
+    .badge-tech {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 24px;
+      border-radius: var(--radius-full);
+      background: var(--gradient-primary);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-accent);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      animation: badgePulse 3s ease-in-out infinite;
+    }
+
+    @keyframes badgePulse {
+      0%, 100% { transform: scale(1); box-shadow: var(--shadow-accent); }
+      50% { transform: scale(1.05); box-shadow: var(--shadow-accent-hover); }
+    }
+
+    .hero-left h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(36px, 6vw, 56px);
+      margin: 0 0 20px 0;
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+      font-weight: 900;
+      background: linear-gradient(135deg, #0a1128 0%, #0A84FF 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: titleSlideIn 1s ease-out 0.2s both;
+    }
+
+    @keyframes titleSlideIn {
+      from { transform: translateX(-50px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    .hero-left p.lead {
+      color: var(--text-muted);
+      margin: 0 0 32px 0;
+      line-height: 1.8;
+      font-size: 19px;
+      animation: fadeIn 1s ease-out 0.4s both;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Hero Stats - Modern Cards */
+    .stats-row {
+      display: flex;
+      gap: 16px;
+      margin-top: 32px;
+      flex-wrap: wrap;
+      animation: fadeIn 1s ease-out 0.6s both;
+    }
+
+    .stat-item {
+      padding: 16px 24px;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, rgba(10, 132, 255, 0.08), rgba(10, 132, 255, 0.04));
+      border: 2px solid rgba(10, 132, 255, 0.15);
+      transition: var(--transition-bounce);
+      font-size: 14px;
+      color: var(--text-muted);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-item::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gradient-primary);
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .stat-item:hover {
+      transform: translateY(-6px) scale(1.05);
+      box-shadow: var(--shadow-accent);
+      border-color: transparent;
+    }
+
+    .stat-item:hover::before {
+      opacity: 0.1;
+    }
+
+    .stat-item strong {
+      color: var(--accent);
+      font-size: 18px;
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 800;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    /* Hero Illustration - 3D Effect */
+    .hero-illustration {
+      flex: 0 0 400px;
+      display: flex;
+      justify-content: center;
+      position: relative;
+      animation: fadeIn 1s ease-out 0.8s both;
+    }
+
+    .illus-box {
+      width: 400px;
+      height: 280px;
+      border-radius: var(--radius-xl);
+      background: var(--gradient-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-accent-hover);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      padding: 50px;
+    }
+
+    .illus-box::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, transparent 100%);
+      animation: shimmer 3s ease-in-out infinite;
+    }
+
+    @keyframes shimmer {
+      0% { transform: translateX(-100%) rotate(45deg); }
+      100% { transform: translateX(100%) rotate(45deg); }
+    }
+
+    .illus-box img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      position: relative;
+      z-index: 1;
+      filter: brightness(0) invert(1) drop-shadow(0 8px 24px rgba(255, 255, 255, 0.3));
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(5deg); }
+    }
+
+    .illus-box:hover {
+      transform: scale(1.05) rotate(-2deg) translateY(-10px);
+      box-shadow: 0 24px 80px rgba(10, 132, 255, 0.4);
+    }
+
+    /* ========================================
+       SECTIONS - Modern Layout
+    ======================================== */
+    /* ========================================
+   SECTIONS - Modern Layout
+======================================== */
+    .section {
+    padding: var(--section-padding) 0;
+    position: relative;
+    
+    }
+
+    .section .container {
+      max-width: 1200px;
+    }
+
+    h2.section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(32px, 5vw, 48px);
+      margin-bottom: 16px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      color: var(--text-primary);
+      position: relative;
+      display: inline-block;
+    }
+
+    h2.section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 80px;
+      height: 5px;
+      background: var(--gradient-primary);
+      border-radius: var(--radius-full);
+    }
+
+    p.lead {
+      color: var(--text-muted);
+      margin-bottom: 48px;
+      font-size: 20px;
+      line-height: 1.8;
+      max-width: 700px;
+    }
+
+    /* ========================================
+       SERVICES SECTION - Card Grid
+    ======================================== */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+    }
+
+    .service-card {
+      background: var(--card);
+      border-radius: var(--radius-xl);
+      padding: 40px;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+      border: 2px solid rgba(10, 132, 255, 0.08);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: var(--gradient-primary);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+
+    .service-card::after {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      background: var(--gradient-primary);
+      border-radius: var(--radius-xl);
+      opacity: 0;
+      filter: blur(20px);
+      transition: var(--transition);
+      z-index: -1;
+    }
+
+    .service-card:hover {
+      transform: translateY(-12px) scale(1.02);
+      box-shadow: var(--shadow-xl);
+      border-color: transparent;
+    }
+
+    .service-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .service-card:hover::after {
+      opacity: 0.4;
+    }
+
+    .service-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: var(--radius-lg);
+      background: var(--gradient-primary);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      color: #ffffff;
+      margin-bottom: 24px;
+      transition: var(--transition-bounce);
+      box-shadow: var(--shadow-accent);
+    }
+
+    .service-card:hover .service-icon {
+      transform: scale(1.15) rotate(10deg);
+      box-shadow: var(--shadow-accent-hover);
+    }
+
+    .service-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      margin-bottom: 12px;
+      font-size: 22px;
+      letter-spacing: -0.3px;
+      color: var(--text-primary);
+    }
+
+    .service-desc {
+      color: var(--text-muted);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* ========================================
+       CONTACT SECTION
+    ======================================== */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 450px;
+      gap: 40px;
+    }
+
+    .contact-card {
+      background: var(--card);
+      padding: 40px;
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-md);
+      border: 2px solid rgba(10, 132, 255, 0.08);
+      transition: var(--transition);
+    }
+
+    .contact-card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-4px);
+    }
+
+    .form-control {
+      border-radius: var(--radius-md);
+      border: 2px solid rgba(10, 132, 255, 0.1);
+      padding: 16px 20px;
+      font-family: inherit;
+      transition: var(--transition);
+      width: 100%;
+      font-size: 16px;
+      background: rgba(10, 132, 255, 0.02);
+    }
+
+    .form-control:focus {
+      box-shadow: 0 0 0 5px rgba(10, 132, 255, 0.1);
+      border-color: var(--accent);
+      outline: none;
+      background: #ffffff;
+    }
+
+    .form-control::placeholder {
+      color: rgba(100, 116, 139, 0.6);
+    }
+
+    /* ========================================
+       FOOTER - Modern & Clean
+    ======================================== */
+    footer.site-footer {
+      padding: 80px 0;
+      color: var(--text-muted);
+      text-align: center;
+      border-top: 2px solid rgba(10, 132, 255, 0.1);
+      background: linear-gradient(180deg, transparent, rgba(10, 132, 255, 0.03));
+      position: relative;
+    }
+
+    footer.site-footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200px;
+      height: 3px;
+      background: var(--gradient-primary);
+      border-radius: var(--radius-full);
+    }
+
+    /* ========================================
+       RESPONSIVE DESIGN
+    ======================================== */
+    @media (max-width: 991px) {
+      .hero-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px;
+      }
+
+      .hero-illustration {
+        order: -1;
+        flex: 0 0 auto;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .site-nav {
+        margin: 16px;
+        padding: 14px 20px;
+      }
+
+      .section {
+        padding: 80px 0;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-row {
+        justify-content: center;
+      }
+
+      .hero {
+        padding: 80px 0;
+      }
+
+      h2.section-title::after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+
+    @media (max-width: 576px) {
+      .hero-left h1 {
+        font-size: 32px;
+      }
+
+      .illus-box {
+        width: 320px;
+        height: 220px;
+        padding: 40px;
+      }
+
+      .nav-links a::after {
+        display: none;
+      }
+
+      .brand-logo {
+        width: 100px;
+        height: 90px;
+      }
+
+      .site-nav {
+        border-radius: var(--radius-lg);
+        margin: 12px;
+      }
+
+      .service-card {
+        padding: 32px;
+      }
+
+      .contact-card {
+        padding: 32px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Scroll Progress Indicator -->
+  <div class="scroll-indicator" id="scrollProgress"></div>
+
+  <!-- ========================================
+       NAVIGATION
+  ======================================== -->
+  <div class="container">
+    <header class="site-nav" role="banner">
+      <div class="nav-inner">
+        <!-- Logo -->
+        <a href="#home" class="brand">
+          <img src="images/new_logo.png" alt="Reyniers IT Solutions Logo" class="brand-logo">
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="ms-auto d-none d-md-flex nav-links" aria-label="Main navigation">
+          <a href="#home" class="click-scroll">Home</a>
+          <a href="#about" class="click-scroll">Over mij</a>
+          <a href="#services" class="click-scroll">Diensten</a>
+          <a href="#contact" class="click-scroll">Contact</a>
+        </nav>
+
+        <!-- Desktop CTA Buttons -->
+        <div class="ms-3 d-none d-md-flex">
+          <a class="btn-ghost me-2" href="tel:+32496312317" aria-label="Bel ons">
+            <i class="bi bi-telephone-fill"></i>
+            <span class="d-none d-lg-inline">Bel nu</span>
+          </a>
+          <a class="btn-cta" href="#contact">
+            Start nu
+            <i class="bi bi-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <div class="d-flex d-md-none ms-auto">
+          <button id="mobileToggle" class="btn-ghost" aria-label="Toggle menu" aria-expanded="false">
+            <i class="bi bi-list"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Navigation -->
+      <nav id="mobileNav" style="display:none; margin-top:16px" aria-label="Mobile navigation">
+        <div style="display:flex; flex-direction:column; gap:10px; padding:10px 8px">
+          <a href="#home" style="padding:14px; border-radius:12px; font-weight:600">Home</a>
+          <a href="#about" style="padding:14px; border-radius:12px; font-weight:600">Over mij</a>
+          <a href="#services" style="padding:14px; border-radius:12px; font-weight:600">Diensten</a>
+          <a href="#contact" style="padding:14px; border-radius:12px; font-weight:600">Contact</a>
+        </div>
+      </nav>
+    </header>
+  </div>
+
+  <!-- ========================================
+       MAIN CONTENT
+  ======================================== -->
+  <main>
+    <!-- HERO SECTION -->
+    <section id="home" class="hero">
+      <div class="container">
+        <div class="hero-card">
+          <!-- Hero Content -->
+          <div class="hero-left">
+            <span class="badge-tech">
+              <i class="bi bi-cpu-fill"></i>
+              Cloud & IT Specialist
+            </span>
+
+            <h1>Betrouwbare IT die met je meedenkt</h1>
+
+            <p class="lead">
+              Bij Reyniers IT Solutions sta jij centraal. Of je nu een particuliere gebruiker bent met IT-problemen,
+              een startup die een vliegende start wil maken, of een kleine onderneming die nood heeft aan betrouwbare
+              IT-ondersteuning — ik sta klaar om je te helpen.
+            </p>
+
+            <!-- CTA Buttons -->
+            <div style="display:flex; gap:16px; flex-wrap:wrap; margin-top:16px">
+              <a class="btn-cta" href="#contact">
+                Neem contact op
+                <i class="bi bi-arrow-right"></i>
+              </a>
+              <a class="btn-ghost" href="#about">
+                <i class="bi bi-info-circle"></i>
+                Meer over mij
+              </a>
+            </div>
+
+            <!-- Stats -->
+            <div class="stats-row">
+              <div class="stat-item">
+                <strong>Jong & gedreven</strong>
+                Scherpe blik op technologie
+              </div>
+              <div class="stat-item">
+                <strong>Persoonlijk</strong>
+                Geen complexe taal
+              </div>
+              <div class="stat-item">
+                <strong>Flexibel</strong>
+                Samen één doel
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Illustration -->
+          <div class="hero-illustration">
+            <div class="illus-box" role="img" aria-label="Reyniers IT logo">
+              <img src="images/new_logo.png" alt="Reyniers IT Solutions">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="section">
+      <div class="container">
+        <div class="row align-items-center">
+          <!-- About Content -->
+          <div class="col-lg-6">
+            <h2 class="section-title">Over Joni Reyniers</h2>
+
+            <p class="lead">
+              Hallo! Mijn naam is Joni Reyniers en ik ben de oprichter van Reyniers IT Solutions.
+              Ik ben 26 jaar oud, woon in Lochristi en heb een grote passie voor alles wat met IT te maken heeft.
+            </p>
+
+            <p style="color:var(--text-muted); line-height:1.8; margin-bottom:20px; font-size:17px">
+              Wat mij drijft, is de kans om mensen en bedrijven te helpen met hun IT-uitdagingen en hen te voorzien
+              van betrouwbare oplossingen. Naast mijn voltijdse baan in de cloud, werk ik als IT-professional in
+              bijberoep, omdat ik mijn expertise verder wil uitbreiden en mijn ondernemersdromen wil realiseren.
+            </p>
+
+            <h3 style="font-size:24px; margin:32px 0 20px 0; font-weight:700; font-family:'Space Grotesk',sans-serif">Wat onderscheidt mij?</h3>
+
+            <p style="color:var(--text-muted); line-height:1.8; margin-bottom:28px; font-size:17px">
+              Mijn persoonlijke benadering. Ik sta graag dicht bij mijn klanten en zorg voor toegankelijke en
+              heldere ondersteuning. Of je nu een kleine ondernemer bent, een eenmanszaak runt, of iemand bent die
+              simpelweg niet weet hoe je een Word-document opent — ik ben er om je te helpen.
+            </p>
+
+            <h3 style="font-size:24px; margin:32px 0 20px 0; font-weight:700; font-family:'Space Grotesk',sans-serif">Flexibiliteit en transparantie</h3>
+
+            <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:20px">
+              <li style="display:flex; gap:16px; padding:20px; background:rgba(10,132,255,0.04); border-radius:16px; border-left:4px solid var(--accent); transition:var(--transition)">
+                <i class="bi bi-geo-alt-fill" style="color:var(--accent); font-size:28px; flex-shrink:0"></i>
+                <div>
+                  <strong style="color:var(--text-primary); display:block; margin-bottom:6px; font-size:18px">
+                    On-site & Remote
+                  </strong>
+                  <span style="color:var(--text-muted); line-height:1.7">
+                    Flexibel in mijn werk, of het nu on-site bij de klant is of via remote ondersteuning.
+                  </span>
+                </div>
+              </li>
+              <li style="display:flex; gap:16px; padding:20px; background:rgba(10,132,255,0.04); border-radius:16px; border-left:4px solid var(--accent); transition:var(--transition)">
+                <i class="bi bi-shield-check" style="color:var(--accent); font-size:28px; flex-shrink:0"></i>
+                <div>
+                  <strong style="color:var(--text-primary); display:block; margin-bottom:6px; font-size:18px">
+                    Transparante samenwerking
+                  </strong>
+                  <span style="color:var(--text-muted); line-height:1.7">
+                    We werken altijd op een transparante en eerlijke manier samen — tevredenheid staat centraal.
+                  </span>
+                </div>
+              </li>
+              <li style="display:flex; gap:16px; padding:20px; background:rgba(10,132,255,0.04); border-radius:16px; border-left:4px solid var(--accent); transition:var(--transition)">
+                <i class="bi bi-people-fill" style="color:var(--accent); font-size:28px; flex-shrink:0"></i>
+                <div>
+                  <strong style="color:var(--text-primary); display:block; margin-bottom:6px; font-size:18px">
+                    Sociale aanpak
+                  </strong>
+                  <span style="color:var(--text-muted); line-height:1.7">
+                    Mijn sociale aard maakt dat ik de interactie met klanten als iets waardevols beschouw.
+                  </span>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Profile Card -->
+          <div class="col-lg-6 mt-4 mt-lg-0">
+            <div class="contact-card" style="display:flex; flex-direction:column; gap:20px; background:linear-gradient(135deg, rgba(10,132,255,0.04), rgba(10,132,255,0.01))">
+              <div style="display:flex; align-items:center; gap:20px">
+                <img src="images/joni.png" alt="Joni Reyniers - Founder"
+                  style="width:100px; height:100px; border-radius:20px; object-fit:cover; box-shadow:var(--shadow-md); border:3px solid rgba(10,132,255,0.2)">
+                <div>
+                  <div style="font-weight:800; font-size:22px; font-family:'Space Grotesk',sans-serif">Joni Reyniers</div>
+                  <div style="color:var(--accent); font-size:15px; font-weight:600">Founder & Cloud Specialist</div>
+                  <div style="color:var(--text-muted); font-size:14px; margin-top:4px">
+                    <i class="bi bi-geo-alt-fill"></i> Lochristi, België
+                  </div>
+                </div>
+              </div>
+
+              <p style="color:var(--text-muted); margin:0; line-height:1.8; font-size:16px">
+                Wat je ook nodig hebt, ik bied op maat gemaakte oplossingen die passen bij jouw situatie en
+                IT-behoeften. Van cloud-setup tot websiteontwikkeling en IT-support — altijd met persoonlijke aandacht.
+              </p>
+
+              <div style="display:flex; gap:12px; margin-top:8px; flex-wrap:wrap">
+                <a class="btn-ghost" href="mailto:jonireyniers@hotmail.be" style="flex:1; min-width:200px; justify-content:center">
+                  <i class="bi bi-envelope-fill"></i>
+                  E-mail
+                </a>
+                <a class="btn-ghost" href="tel:+32496312317" style="flex:1; min-width:200px; justify-content:center">
+                  <i class="bi bi-telephone-fill"></i>
+                  Bel nu
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="section" style="background:linear-gradient(180deg, rgba(10,132,255,0.03), transparent)">
+      <div class="container">
+        <h2 class="section-title">Wat kan ik voor je doen?</h2>
+        <p class="lead">Op maat gemaakte IT-diensten die passen bij jouw situatie en behoeften.</p>
+
+        <div class="services-grid">
+          <!-- Service 1: Cloud -->
+          <article class="service-card">
+            <div class="service-icon">
+              <i class="bi bi-cloud-fill"></i>
+            </div>
+            <h3 class="service-title">Cloud Setup & Beheer</h3>
+            <p class="service-desc">
+              Ik help uw bedrijf met het opzetten en beheren van cloudoplossingen, zodat u veilig, flexibel en
+              schaalbaar kunt werken. Van migratie tot doorlopend beheer.
+            </p>
+          </article>
+
+          <!-- Service 2: Website -->
+          <article class="service-card">
+            <div class="service-icon">
+              <i class="bi bi-code-slash"></i>
+            </div>
+            <h3 class="service-title">Website Creatie & Ondersteuning</h3>
+            <p class="service-desc">
+              Ik ontwerp en ontwikkel professionele websites die aansluiten bij de behoeften van uw bedrijf.
+              Van opzet tot onderhoud — altijd up-to-date.
+            </p>
+          </article>
+
+          <!-- Service 3: Training -->
+          <article class="service-card">
+            <div class="service-icon">
+              <i class="bi bi-person-video3"></i>
+            </div>
+            <h3 class="service-title">IT Training & Workshops</h3>
+            <p class="service-desc">
+              Praktische IT-trainingen en workshops, op maat van uw team. Van softwaregebruik tot beveiliging —
+              ik zorg dat uw medewerkers efficiënt werken.
+            </p>
+          </article>
+
+          <!-- Service 4: KMO Solutions -->
+          <article class="service-card">
+            <div class="service-icon">
+              <i class="bi bi-building"></i>
+            </div>
+            <h3 class="service-title">IT-oplossingen voor KMO's</h3>
+            <p class="service-desc">
+              Op maat gemaakte IT-diensten voor KMO's, van netwerkinfrastructuur tot beveiliging en cloudoplossingen.
+              Technologie die uw bedrijf ondersteunt.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="section" style="background:linear-gradient(180deg, rgba(10,132,255,0.04), transparent)">
+      <div class="container">
+        <h2 class="section-title">Op zoek naar een betrouwbare IT-partner?</h2>
+        <p class="lead">Laten we samen kijken hoe ik jou kan ondersteunen. Neem vrijblijvend contact op!</p>
+
+        <div class="contact-grid">
+          <!-- Contact Form -->
+          <form class="contact-card" 
+                id="contactForm"
+                action="https://formspree.io/f/manvadqq" 
+                method="POST"
+                aria-label="Contact formulier">
+            
+            <!-- Honeypot field (verborgen veld om bots te vangen) -->
+            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+            
+            <!-- Formspree configuratie -->
+            <input type="hidden" name="_subject" value="Nieuw contact formulier bericht">
+            <input type="hidden" name="_captcha" value="false">
+            
+            <!-- reCAPTCHA token (wordt automatisch ingevuld) -->
+            <input type="hidden" id="recaptchaToken" name="g-recaptcha-response">
+            
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px">
+              <input class="form-control" name="name" placeholder="Je naam" required aria-label="Naam" maxlength="100">
+              <input class="form-control" type="email" name="email" placeholder="Je e-mailadres" required aria-label="E-mail" maxlength="100">
+            </div>
+
+            <input class="form-control" name="company" placeholder="Bedrijf (optioneel)" style="margin-top:16px" aria-label="Bedrijf" maxlength="100">
+
+            <textarea class="form-control" name="message" placeholder="Waar kan ik je mee helpen?" 
+                      style="margin-top:16px; height:160px; resize:vertical" 
+                      aria-label="Bericht" required maxlength="5000"></textarea>
+
+            <div style="display:flex; justify-content:flex-end; margin-top:24px">
+              <button class="btn-cta" type="submit">
+                Verstuur bericht
+                <i class="bi bi-send-fill"></i>
+              </button>
+            </div>
+
+            <!-- reCAPTCHA badge info -->
+            <p style="font-size:12px; color:var(--text-muted); margin-top:16px; margin-bottom:0">
+              Deze site wordt beschermd door reCAPTCHA en het Google 
+              <a href="https://policies.google.com/privacy" target="_blank" style="font-size:12px">Privacybeleid</a> en 
+              <a href="https://policies.google.com/terms" target="_blank" style="font-size:12px">Servicevoorwaarden</a> zijn van toepassing.
+            </p>
+          </form>
+
+          <!-- Contact Info Sidebar -->
+          <aside>
+            <!-- Contact Details -->
+            <div class="contact-card">
+              <h3 style="margin-top:0; margin-bottom:24px; font-size:24px; font-weight:700; font-family:'Space Grotesk',sans-serif">Contactgegevens</h3>
+
+              <p style="color:var(--text-muted); margin-bottom:16px">
+                <strong style="color:var(--text-primary); font-size:18px">Joni Reyniers</strong>
+              </p>
+
+              <p style="color:var(--text-muted); margin-bottom:16px; display:flex; align-items:center; gap:12px">
+                <i class="bi bi-geo-alt-fill" style="color:var(--accent); font-size:20px"></i>
+                Oude Veldstraat 273 B, 9080 Lochristi
+              </p>
+
+              <p style="color:var(--text-muted); margin-bottom:16px; display:flex; align-items:center; gap:12px">
+                <i class="bi bi-telephone-fill" style="color:var(--accent); font-size:20px"></i>
+                <a href="tel:+32496312317">+32 496 31 23 17</a>
+              </p>
+
+              <p style="color:var(--text-muted); margin-bottom:16px; display:flex; align-items:center; gap:12px">
+                <i class="bi bi-envelope-fill" style="color:var(--accent); font-size:20px"></i>
+                <a href="mailto:jonireyniers@hotmail.be">jonireyniers@hotmail.be</a>
+              </p>
+
+              <p style="color:var(--text-muted); margin-bottom:16px; display:flex; align-items:center; gap:12px">
+                <i class="bi bi-briefcase-fill" style="color:var(--accent); font-size:20px"></i>
+                BTW: BE 1019.554.330
+              </p>
+
+              <div style="height:24px"></div>
+
+              <h5 style="margin-bottom:12px; font-weight:700; font-size:16px">Veelgestelde vraag</h5>
+              <p style="color:var(--text-muted); font-size:15px; margin:0; line-height:1.7">
+                <strong style="color:var(--text-primary)">Wanneer kan je starten?</strong><br>
+                Voor spoedgevallen vaak binnen 24 uur. Voor grotere projecten plannen we samen een geschikte startdatum in.
+              </p>
+            </div>
+
+            <!-- Social Media -->
+            <div style="height:24px"></div>
+            <div class="contact-card">
+              <h5 style="margin-top:0; margin-bottom:20px; font-weight:700; font-size:18px">Volg me online</h5>
+              <div style="display:flex; gap:12px">
+                <a class="btn-ghost" href="https://www.facebook.com/profile.php?id=61573100771778" aria-label="Facebook" style="flex:1; justify-content:center">
+                  <i class="bi bi-facebook"></i>
+                </a>
+                <a class="btn-ghost" href="https://www.linkedin.com/in/joni-reyniers-40892115a/" aria-label="LinkedIn" style="flex:1; justify-content:center">
+                  <i class="bi bi-linkedin"></i>
+                </a>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================
+       FOOTER
+  ======================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div style="display:flex; align-items:center; justify-content:center; gap:16px; flex-wrap:wrap; margin-bottom:16px">
+        <div style="font-weight:800; font-size:20px; font-family:'Space Grotesk',sans-serif">Reyniers IT Solutions</div>
+        <div style="color:var(--text-muted)">© <span id="year"></span> — Alle rechten voorbehouden</div>
+      </div>
+
+      <div style="text-align:center; color:var(--text-muted); font-size:15px; line-height:1.8">
+        Joni Reyniers — Oude Veldstraat 273 B, 9080 Lochristi, België<br>
+        BTW: BE 1019.554.330
+      </div>
+
+      <div style="margin-top:16px">
+        <a href="privacy-policy.html" style="color:var(--accent); font-size:15px; font-weight:600">Privacybeleid</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================
+       JAVASCRIPT
+  ======================================== -->
+  <!-- jQuery (MOET EERST geladen worden!) -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  
+  <!-- Click Scroll Plugin (werkt alleen als jQuery geladen is) -->
+  <script src="js/click-scroll.js"></script>
+
+  <script>
+    // Dynamic year in footer
+    document.getElementById('year').textContent = (new Date()).getFullYear();
+
+    // Scroll progress indicator
+    window.addEventListener('scroll', function () {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById('scrollProgress').style.width = scrolled + '%';
+    });
+
+    // Mobile menu toggle
+    const mobileToggle = document.getElementById('mobileToggle');
+    const mobileNav = document.getElementById('mobileNav');
+
+    mobileToggle.addEventListener('click', function () {
+      const isOpen = mobileNav.style.display !== 'none';
+      mobileNav.style.display = isOpen ? 'none' : 'block';
+      this.setAttribute('aria-expanded', !isOpen);
+    });
+
+    // Close mobile menu when clicking nav links
+    mobileNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileNav.style.display = 'none';
+        mobileToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // REMOVE ALL THIS CUSTOM SCROLL CODE - click-scroll.js handles it
+    // document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    //   ... REMOVE THIS ENTIRE BLOCK ...
+    // });
+
+    // Intersection Observer for scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe all service cards for animation on scroll
+    document.querySelectorAll('.service-card').forEach((card, index) => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(30px)';
+      card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+      observer.observe(card);
+    });
+
+    // Observe section titles for animation
+    document.querySelectorAll('.section-title').forEach((title) => {
+      title.style.opacity = '0';
+      title.style.transform = 'translateY(20px)';
+      title.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(title);
+    });
+
+    // Google reCAPTCHA v3 Integration
+    const contactForm = document.getElementById('contactForm');
+    
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Execute reCAPTCHA
+      grecaptcha.ready(function() {
+        grecaptcha.execute('6LfCFRMsAAAAAMw_0Y025CBhRB3JRvYKovoXtXOt', {action: 'submit'}).then(function(token) {
+          // Add token to hidden input
+          document.getElementById('recaptchaToken').value = token;
+          
+          // Submit the form
+          contactForm.submit();
+        });
+      });
+    });
+  </script>
+</body>
+</html>
